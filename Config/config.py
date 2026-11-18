@@ -13,8 +13,5 @@ class Config:
         "no",
     }
     TIMEOUT = 30000
-    ADMIN_EMAIL = os.getenv(
-        "SMARTRECRUIT_ADMIN_EMAIL",
-        "prakashlavania81@gmail.com",
-    )
-    ADMIN_PASSWORD = os.getenv("SMARTRECRUIT_ADMIN_PASSWORD", "Employer@123")
+    ADMIN_EMAIL = os.getenv("SMARTRECRUIT_ADMIN_EMAIL", "")
+    ADMIN_PASSWORD = os.getenv("SMARTRECRUIT_ADMIN_PASSWORD", "")
