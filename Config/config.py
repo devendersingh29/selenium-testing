@@ -4,7 +4,7 @@ import os
 
 
 class Config:
-    BASE_URL = "https://qa.thesmartrecruit.ai/#/session/welcome"
+    BASE_URL = os.getenv("SMARTRECRUIT_BASE_URL") or "https://qa.thesmartrecruit.ai/#/session/welcome"
     BROWSER = "chromium"
     BROWSER_CHANNEL = os.getenv("PLAYWRIGHT_CHANNEL", "chrome")
     HEADLESS = os.getenv("PLAYWRIGHT_HEADLESS", "false").lower() not in {
