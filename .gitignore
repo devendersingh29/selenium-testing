@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.idea/
+.junie/
+
+# Local credentials and generated test output
+Config/credentials.json
+Logs/
+Reports/
+Screenshots/
+Downloads/
