@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="11" failures="1" skipped="0" tests="14" time="408.419" timestamp="2026-11-19T06:32:33.527662+00:00" hostname="smartrecruit-poc-16-lj1qk-mq3rf-c89jh"><testcase classname="Tests.test_Manager" name="test_create_manager_dialog_visible" time="34.451"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    63 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d20356ff0&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           63 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_Manager" name="test_create_manager_dialog_title" time="34.376"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    61 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d203a3050&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           61 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_Manager" name="test_create_manager_dialog_labels" time="35.335"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    40 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d2035c0b0&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           40 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_Manager" name="test_cancel_button_closes_create_manager_dialog" time="34.028"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    54 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d203a0b30&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           54 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_add_job_opening" name="test_job_opening_screen_visible" time="33.334"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    62 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d200d30b0&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           62 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_add_job_opening" name="test_job_opening_screen_buttons" time="33.251"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    63 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d200d2ba0&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           63 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_add_job_opening" name="test_job_opening_screen_fields" time="33.724"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    63 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d200a7ad0&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           63 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_add_job_opening" name="test_job_opening_screen_labels" time="33.285"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    63 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d203a08c0&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           63 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_add_job_opening" name="test_job_opening_card_does_not_flicker_on_edge_hover" time="33.071"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    63 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d203a09e0&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           63 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_add_job_opening" name="test_hiring_workflow_stage_navigates_from_list_view[cbt]" time="33.055"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    63 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d200e39b0&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           63 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_add_job_opening" name="test_hiring_workflow_stage_navigates_from_list_view[panel]" time="33.017"><error message="failed on setup with &quot;AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    63 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;[+15 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    @pytest.fixture
+    def admin_page(page: Page) -&gt; Page:
+        """Return a page signed in with the configured administrator account."""
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+conftest.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d200e3470&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           63 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</error></testcase><testcase classname="Tests.test_admin_signin" name="test_admin_login" time="32.973"><failure message="AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'&#10;Actual value: https://dev.thesmartrecruit.ai/#/session/signin &#10;Call log:&#10;  - Expect &quot;to_have_url&quot; with timeout 30000ms&#10;    63 × locator resolved to &lt;html lang=&quot;en&quot;&gt;…&lt;/html&gt;&#10;       - unexpected value &quot;https://dev.thesmartrecruit.ai/#/session/signin&quot;&#10;&#10;Aria snapshot:&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.&#10;- button&#10;- img &quot;Smart Recruit&quot;&#10;- paragraph: Welcome Back !&#10;[+14 more lines; full report in element text]">page = &lt;Page url='https://dev.thesmartrecruit.ai/#/session/signin'&gt;
+
+    def test_admin_login(page: Page) -&gt; None:
+        WelcomePage(page).open_organization_signin()
+        admin_signin = AdminSignin(page)
+    
+        expect(admin_signin.smart_recruit_logo).to_be_visible()
+        print("SmartRecruit logo is visible successfully.")
+&gt;       admin_signin.login(Config.ADMIN_EMAIL, Config.ADMIN_PASSWORD)
+
+Tests/test_admin_signin.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;Pages.admin_signin.AdminSignin object at 0x741d200e3710&gt;
+email = 'Kashish.rajput@walkingtree.tech', password = 'Password@123'
+
+    def login(self, email: str, password: str) -&gt; None:
+        """Sign in and wait until an authenticated dashboard route is open."""
+        self.enter_email(email)
+        self.enter_password(password)
+        self.click_login()
+&gt;       expect(self.page).to_have_url(
+            re.compile(r".*/#/dashboard/.*"),
+            timeout=30_000,
+        )
+E       AssertionError: Page URL expected to be 're.compile('.*/#/dashboard/.*')'
+E       Actual value: https://dev.thesmartrecruit.ai/#/session/signin 
+E       Call log:
+E         - Expect "to_have_url" with timeout 30000ms
+E           63 × locator resolved to &lt;html lang="en"&gt;…&lt;/html&gt;
+E              - unexpected value "https://dev.thesmartrecruit.ai/#/session/signin"
+E       
+E       Aria snapshot:
+E       - img "Smart Recruit"
+E       - paragraph: Hire Smarter. Scale Faster. Build Your Dream Team.
+E       - button
+E       - img "Smart Recruit"
+E       - paragraph: Welcome Back !
+E       - paragraph: Log in to manage your candidates and hiring process.
+E       - paragraph: "Email ID :"
+E       - textbox "Enter": Kashish.rajput@walkingtree.tech
+E       - paragraph: "Password :"
+E       - textbox "Enter": Password@123
+E       - button
+E       - link "Forgot Password ?":
+E         - /url: "#/session/forgot-password"
+E       - button "LOGIN"
+E       - paragraph:
+E         - text: Don't have an account?
+E         - link "Sign up":
+E           - /url: "#/session/organization-signup"
+E       - paragraph: Login as Candidate ?
+
+Pages/admin_signin.py:46: AssertionError</failure></testcase><testcase classname="Tests.test_login" name="test_user_can_complete_organization_signup_form" time="2.588" /><testcase classname="Tests.test_welcome" name="test_welcome_page_displays_get_started" time="1.710" /></testsuite></testsuites>
